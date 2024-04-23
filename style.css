@@ -1,0 +1,83 @@
+body {
+    font-family: Helvetica, sans-serif;
+}
+
+.wrapper {
+    width: 100vw;
+}
+
+.controls {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.main-content {
+    width: 100vw;
+    margin-top: 2em;
+}
+
+.card {
+    width: 300px;
+    margin: auto;
+    padding: 1em;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-body {
+    margin-bottom: 1em;
+}
+
+.card-body img {
+    max-width:100%;
+    max-height:100%;
+}
+
+#range-opacity {
+    width: 100%;
+    accent-color: #0063e5;
+}
+
+
+
+/** fancy checkbox slider **/
+.custom-checkbox-slider {
+    position: relative;
+    margin-right:40px;
+    &:checked {
+      &::before {
+        transform:translateX(150%);
+      }
+      &::after {
+        background: #0063e5;
+      }
+    }
+    &::after,
+    &::before {
+      content: '';
+      top:-2px;
+      left:-2px;
+      position: absolute;
+      transition: all 0.2s ease-in-out;
+    }
+    &::after {
+      background: #aeaeae;
+      width:50px;
+      height:20px;
+      border-radius:10px;
+      outline: none;
+    }
+    &::before {
+      width:18px;
+      height:18px;
+      left:1px;
+      top:-1px;
+      border-radius:50%;
+      background: #ffffff;
+      z-index:1;
+      outline: none;
+    }
+  }

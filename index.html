@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="de-DE">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Hello World!</title>
+  </head>
+  <body>
+    <div class="wrapper">
+        <div class="controls">
+            <div class="single-control">
+                <input type="checkbox" class="custom-checkbox-slider" id="check-html" name="check-html" value="HTML" checked disabled />
+                <label for="check-html">HTML</label>
+            </div>
+            <div class="single-control">
+                <input type="checkbox" class="custom-checkbox-slider" id="check-htmlcss" name="check-htmlcss" value="HTML" />
+                <label for="check-htmlcss">CSS aktivieren</label>
+            </div>
+            <div class="single-control">
+                <input type="checkbox" class="custom-checkbox-slider" id="check-htmlcssjs" name="check-htmlcssjs" value="HTML" />
+                <label for="check-htmlcssjs">JS aktivieren</label>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="card">
+                <div class="card-header">
+                    <h1>Demo</h1>
+                </div>
+                <div class="card-body">
+                    <img src="fruit.jpg" id="card-image" />
+                </div>
+                <div class="card-footer">
+                    <input type="range" id="range-opacity" name="range-opacity" value="100" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // listener for css checkbox
+            var checkHTMLCSS = document.getElementById('check-htmlcss')
+            checkHTMLCSS.addEventListener('change', () => {
+                if (checkHTMLCSS.checked) {
+                    var link = document.createElement("link");
+                    link.href = "style.css";
+                    link.type = "text/css";
+                    link.rel = "stylesheet";
+                    document.getElementsByTagName("head")[0].appendChild(link);
+                } else {
+                    document.getElementsByTagName("link")[0].remove()
+                }
+            })
+
+            // listener for js checkbox
+            var checkHTMLCSSJS = document.getElementById('check-htmlcssjs')
+            checkHTMLCSSJS.addEventListener('change', () => {
+                if (checkHTMLCSSJS.checked) {
+                    document.getElementById('range-opacity').addEventListener('input', addInputEL)
+                } else {
+                    document.getElementById('range-opacity').removeEventListener('input', addInputEL)
+                }
+            })
+
+        })
+
+        function addInputEL() {
+            var val = document.getElementById('range-opacity').value
+            document.getElementById('card-image').style.opacity = val/100
+        }
+    </script>
+  </body>
+</html>
