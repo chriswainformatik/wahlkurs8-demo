@@ -36,6 +36,8 @@
         </div>
     </div>
 
+    <div id="mouse-follower"><img src="cat.png" /></div>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
 
@@ -58,8 +60,11 @@
             checkHTMLCSSJS.addEventListener('change', () => {
                 if (checkHTMLCSSJS.checked) {
                     document.getElementById('range-opacity').addEventListener('input', addInputEL)
+                    document.getElementById('mouse-follower').style.display = 'block'
+                    document.addEventListener('mousemove', event => followMouse(event))
                 } else {
                     document.getElementById('range-opacity').removeEventListener('input', addInputEL)
+                    document.getElementById('mouse-follower').style.display = 'none'
                 }
             })
 
@@ -68,6 +73,12 @@
         function addInputEL() {
             var val = document.getElementById('range-opacity').value
             document.getElementById('card-image').style.opacity = val/100
+        }
+
+        function followMouse(event) {
+            var follower = document.getElementById('mouse-follower')
+            follower.style.left = (event.clientX + 10) + 'px'
+            follower.style.top = (event.clientY - 10) + 'px'
         }
     </script>
   </body>

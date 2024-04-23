@@ -41,6 +41,12 @@ body {
     accent-color: #0063e5;
 }
 
+#mouse-follower {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 
 
 /** fancy checkbox slider **/
